@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
 
 
         initAdapter()
-        binding.btnOpen.setOnClickListener { v: View? ->
+        binding.btnOpen.setOnClickListener { v ->
             if (serialHelper.open()) {
                 binding.btnOpen.isEnabled = false
             } else {
