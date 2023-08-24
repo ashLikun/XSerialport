@@ -1,0 +1,46 @@
+apply plugin: 'com.android.library'
+// 使用Kotlin插件
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+    }
+
+    buildFeatures {
+        buildConfig = false
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    //java8
+    compileOptions {
+        //定义生成的META-INF/library_release文件名 More than one file was found with OS independent path 'META-INF/library_release.kotlin_module'
+        kotlinOptions.freeCompilerArgs += ['-module-name', 'com.ashlikun.serialport']
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+}
+
+
+dependencies {
+    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
+}
+
