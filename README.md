@@ -28,7 +28,7 @@ allprojects {
 2. 在项目Module下的`build.gradle`文件中添加：
 ```
 dependencies {
-    implementation 'io.github.xmaihh:serialport:2.1.1'
+    implementation 'com.github.ashLikun:XSerialport:1.0.1'
 }
 ```
 # 属性支持
